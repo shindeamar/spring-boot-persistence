@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: spring-boot-persistence
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "off"
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+server:
+  port: 8081
+  error:
+    whitelabel:
+      enabled: false
+---
+spring:
+  profiles: dev
+logging:
+  level:
+    .: DEBUG
+    org.springframework: ERROR
+    com.ctl: DEBUG
+  file: ./log/persistence.log
+  pattern:
+    console: "%d %-6level [%t] %logger{25} - %msg %n"
+    file: "%d %-6level [%t] %logger{25} - %msg %n"
